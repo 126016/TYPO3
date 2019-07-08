@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" lang="en" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="content">
+    <h1>Add New Blog</h1>
+    <f:form action="add" object="{blog}" name="blog" additionalAttributes="{role: 'form'}">
+        <div class="form-group">
+            <label>Blog Title</label>
+            <f:form.textfield property="title" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Blog Description</label>
+            <f:form.textarea property="description" class="form-control"/>
+        </div>
+        <f:form.submit value="Create Blog!" class="btn btn-primary"/>
+    </f:form>
+</f:section>
+</html>

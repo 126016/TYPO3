@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" lang="en" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="content">
+    <h1>Edit Blog</h1>
+    <f:form action="update" object="{blog}" name="blog" additionalAttributes="{role: 'form'}">
+        <div class="form-group">
+            <label>Blog Title</label>
+            <f:form.textfield property="title" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Blog Description</label>
+            <f:form.textarea property="description" class="form-control"/>
+        </div>
+        <f:form.submit value="Update" class="btn btn-primary"/>
+        <f:link.action action="list" class="btn btn-primary"><i class="fas fa-cancel"> </i> Cancel </f:link.action>
+    </f:form>
+</f:section>
+</html>

@@ -1,0 +1,29 @@
+{
+    "name": "ion2s/simpleblogaleks",
+    "type": "typo3-cms-extension",
+    "description": "Extension based on the Extension book.",
+    "authors": [
+        {
+            "name": "Aleksandra Fey",
+            "role": "Developer"
+        }
+    ],
+    "version": "1.0.0",
+    "require": {
+        "typo3/cms-core": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ion2s\\Simpleblogaleks\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ion2s\\Simpleblogaleks\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "simpleblogaleks": "self.version",
+        "typo3-ter/simpleblogaleks": "self.version"
+    }
+}

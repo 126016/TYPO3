@@ -1,0 +1,59 @@
+/* Detailseite / Contentseite des Blogs */
+
+@import url('https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap');
+
+.headline-blogContent {
+
+    font-family: 'DM Serif Display', serif;
+    font-size: 4rem;
+    line-height: 1.2;
+    margin: 4rem 0 3rem 0;
+
+}
+
+
+.blog-paragraph {
+
+    font-size: 1.2rem;
+    line-height: 1.5;
+
+}
+
+@media screen and (min-width: 1024px) {
+
+    .blog-paragraph {
+        max-width: 80%;
+    }
+}
+
+
+
+.my-list-item-def {
+     display: flex;
+     justify-content: space-between;
+}
+
+.list-item-blog-title {
+      display: inline-block;
+      width: 450px;
+}
+
+.btn-ext {
+    margin-top: 1rem;
+}
+
+.tx-simpleblogaleks {
+    background-color: #eeeeee;
+    background-clip: border-box;
+    border: 1px solid rgba (0,0,0,.125);
+    padding: 1rem;
+}
+
+.tx-simple-footer {
+    margin-top: 0.8rem;
+}
+
+.text-float-right {
+    float: right;
+    margin-top: 2px;
+}
