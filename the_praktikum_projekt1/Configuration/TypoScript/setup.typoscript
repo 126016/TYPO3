@@ -1,0 +1,356 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/Styling/setup.typoscript">
+
+##########################
+#### ALLES IN HELPER
+##########################
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:the_praktikum_projekt1/Configuration/TypoScript/Helper">
+
+
+##############
+#### PAGE ####
+##############
+config.contentObjectExceptionHandler = 0
+page = PAGE
+
+page {
+    typeNum = 0
+    shortcutIcon = EXT:the_praktikum_projekt1/Resources/Public/Icons/faviconTypo3.ico
+
+    10 = FLUIDTEMPLATE
+    10 {
+
+
+
+        # Template names will be generated automatically by converting the applied
+        # backend_layout, there is no explicit mapping necessary anymore.
+        #
+        # BackendLayout Key
+        # subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+        #
+        # Backend Record
+        # uid: 1 -> 1.html
+        #
+        # Database Entry
+        # value: -1 -> None.html
+        # value: pagets__subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+        # FROM SITEPACKAGE BUILDER
+#        templateName = TEXT
+#        templateName {
+#            cObject = TEXT
+#            cObject {
+#                data = pagelayout
+#                required = 1
+#                case = uppercamelcase
+#                split {
+#                    token = pagets__
+#                    cObjNum = 1
+#                    1.current = 1
+#                }
+#            }
+#            ifEmpty = Default
+#        }
+
+
+#OD MARTIN PRPRAVKA
+#        templateName = TEXT
+#        templateName.stdWrap.cObject = CASE
+#        templateName.stdWrap.cObject {
+#            #in pagelayout wird der wert diese auswahl box gespeichert
+#            key.data = levelfield:-2, backend_layout_next_level, slide
+#            key.override.field = backend_layout
+#
+#            pagets__homeKey = TEXT
+#            pagets__homeKey.value = Homekey
+#
+#            pagets__1ColumnKey = TEXT
+#            pagets__1ColumnKey.value = 1Column
+#
+#            pagets__2ColumnKey = TEXT
+#            pagets__2ColumnKey.value = 2Colum
+#
+#            default = TEXT
+#            default.value = 2Colum
+#        }
+
+# NOVA PROBA
+
+        templateName = TEXT
+        templateName {
+            cObject = TEXT
+            cObject {
+                data = pagelayout
+
+                #field = backend_layout
+                #ifEmpty.data = levelfield:-2, backend_layout_next_level, slide
+                #ifEmpty.ifEmpty = default
+
+                required = 1
+                case = uppercamelcase
+                split {
+                    token = pagets__
+                    cObjNum = 1
+                    1.current = 1
+                }
+            }
+            ifEmpty = Default
+        }
+
+        templateName.stdWrap.cObject = CASE
+        templateName.stdWrap.cObject {
+
+            key.data = pagelayout
+
+            pagets__homeKey = TEXT
+            pagets__homeKey.value = Home
+
+            pagets__1ColumnKey = TEXT
+            pagets__1ColumnKey.value = 1Column
+
+            pagets__2ColumnKey = TEXT
+            pagets__2ColumnKey.value = 2Column
+
+            pagets__GalleryKey = TEXT
+            pagets__GalleryKey.value = Gallery
+
+            default = TEXT
+            default.value = 2Colum
+        }
+
+
+        templateRootPaths {
+            0 = EXT:the_praktikum_projekt1/Resources/Private/Templates/Page/Standard/
+            1 = {$page.fluidtemplate.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:the_praktikum_projekt1/Resources/Private/Partials/Page/
+            1 = {$page.fluidtemplate.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:the_praktikum_projekt1/Resources/Private/Layouts/Page/
+            1 = {$page.fluidtemplate.layoutRootPath}
+        }
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10 {
+                references.fieldName = media
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            20 {
+                # First settup
+                levels = 4
+                includeSpacer = 1
+                expandAll = 1
+                as = mainnavigation
+                titleField = nav_title // title
+            }
+        }
+    }
+
+    meta {
+        viewport = {$page.meta.viewport}
+        robots = {$page.meta.robots}
+        apple-mobile-web-app-capable = {$page.meta.apple-mobile-web-app-capable}
+        description = {$page.meta.description}
+        description {
+            override.field = description
+        }
+        author = {$page.meta.author}
+        author {
+            override.field = author
+        }
+        keywords = {$page.meta.keywords}
+        keywords {
+            override.field = keywords
+        }
+        X-UA-Compatible = {$page.meta.compatible}
+        X-UA-Compatible {
+            attribute = http-equiv
+        }
+
+        # OpenGraph Tags
+        og:title {
+            attribute = property
+            field = title
+        }
+        og:site_name {
+            attribute = property
+            data = TSFE:tmpl|setup|sitetitle
+        }
+        og:description = {$page.meta.description}
+        og:description {
+            attribute = property
+            field = description
+        }
+        og:image {
+            attribute = property
+            stdWrap.cObject = FILES
+            stdWrap.cObject {
+                references {
+                    data = levelfield:-1, media, slide
+                }
+                maxItems = 1
+                renderObj = COA
+                renderObj {
+                    10 = IMG_RESOURCE
+                    10 {
+                        file {
+                            import.data = file:current:uid
+                            treatIdAsReference = 1
+                            width = 1280c
+                            height = 720c
+                        }
+                        stdWrap {
+                            typolink {
+                                parameter.data = TSFE:lastImgResourceInfo|3
+                                returnLast = url
+                                forceAbsoluteUrl = 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    includeCSSLibs {
+
+    }
+
+    includeCSS {
+        #Website CSS Requierements
+        the_praktikum_projekt1_v8_layout = EXT:the_praktikum_projekt1/Resources/Public/Css/layout.min.css
+        bootstrapFlex = EXT:the_praktikum_projekt1/Resources/Public/Css/bootstrap-flex.css
+        smCore = EXT:the_praktikum_projekt1/Resources/Public/Css/sm-core-css.css
+        smSimple = EXT:the_praktikum_projekt1/Resources/Public/Css/sm-simple.css
+        smartmenu = EXT:the_praktikum_projekt1/Resources/Public/Css/smartmenu.css
+        myStyles = EXT:the_praktikum_projekt1/Resources/Public/Css/mystyles.css
+        #For Gallery
+        #bootstrapcdn = https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+        bootstrapcdn.external = 1
+        googleapis = https://fonts.googleapis.com/css?family=Droid+Sans:400,700
+        googleapis.external = 1
+        baguettebox = https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css
+        baguettebox.external = 1
+        galleryClean = EXT:the_praktikum_projekt1/Resources/Public/Css/gallery-clean.css
+        #For geile Font for Praktikum bei ion2s
+        geileFont = https://fonts.googleapis.com/css?family=Indie+Flower|Raleway&display=swap
+        geileFont.external = 1
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+
+    }
+
+    includeJSFooterlibs {
+
+    }
+
+    includeJSFooter {
+        the_praktikum_projekt1_v8_scripts = EXT:the_praktikum_projekt1/Resources/Public/JavaScript/Dist/scripts.js
+        tether = https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js
+        tether.external = 1
+        jQuery = EXT:the_praktikum_projekt1/Resources/Public/JavaScript/jquery-3.1.1.min.js
+        bootstrap = EXT:the_praktikum_projekt1/Resources/Public/JavaScript/bootstrap.js
+        jQuerySmartmenu = EXT:the_praktikum_projekt1/Resources/Public/JavaScript/jquery.smartmenus.min.js
+        custom = EXT:the_praktikum_projekt1/Resources/Public/JavaScript/custom.js
+        #For Gallery
+        baguetteBoxMin = https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js
+        baguetteBoxMin.external = 1
+        galleryBaguette = EXT:the_praktikum_projekt1/Resources/Public/JavaScript/galleryBaguette.js
+
+    }
+}
+
+
+################
+#### CONFIG ####
+################
+config {
+    absRefPrefix = auto
+    no_cache = {$config.no_cache}
+    uniqueLinkVars = 1
+    pageTitleFirst = 1
+    linkVars = L
+    prefixLocalAnchors = {$config.prefixLocalAnchors}
+    renderCharset = utf-8
+    metaCharset = utf-8
+    doctype = html5
+    removeDefaultJS = {$config.removeDefaultJS}
+    inlineStyle2TempFile = 1
+    admPanel = {$config.admPanel}
+    debug = 0
+    cache_period = 86400
+    sendCacheHeaders = {$config.sendCacheHeaders}
+    intTarget =
+    extTarget =
+    disablePrefixComment = 1
+    index_enable = 1
+    index_externals = 1
+    index_metatags = 1
+    headerComment = {$config.headerComment}
+
+    // Disable Image Upscaling
+    noScaleUp = 1
+
+    // Compression and Concatenation of CSS and JS Files
+    compressJs = 0
+    compressCss = 0
+    concatenateJs = 0
+    concatenateCss = 0
+
+    #Standardsprache festlegen
+    sys_language_uid = 0
+    language = en
+    locale_all = en_US.UTF-8
+    htmlTag_langKey = en
+
+    linkVars = L(int)
+
+    sys_language_overlay = hideNonTranslated
+}
+# Deutsch
+[globalVar = GP:L=1]
+
+    config {
+        sys_language_uid = 1
+        language = de
+        locale_all = de_DE.utf-8
+        htmlTag_langKey = de
+    }
+
+[globalVar]
+
+#Mazedonisch
+[globalVar = GP:L=2]
+
+    config {
+        sys_language_uid = 2
+        language = mk
+        locale_all = mk_MK.utf-8
+        htmlTag_langKey = mk
+    }
+
+[globalVar]
+
+#[data["pagelayout"] == ]
+#
+##    #Second example
+##    page.bodyTag >
+##    #10000 = TEXT
+##    #10000.value = test
+##    #page.bodyTagCObject <
+##    page.bodyTagCObject.stdWrap.wrap = <body class="something-|">
+#
+#    #Fist example
+#    page.bodyTag = <body id="home-sucsess">
+#[ELSE]
+#    page.bodyTag = <body id="not-home">
+#[END]

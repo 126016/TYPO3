@@ -1,0 +1,23 @@
+#page.bodyTagCObject = COA
+#page.bodyTagCObject {
+#    10 = TEXT
+#    10.value = <body style="background-image:url('
+#
+#    30 = TEXT
+#    30.value = ');">
+#}
+
+##temporäres objekt Hintergrundbild aus den Seiteneigenschaften/Ressourcen/Media ausgelesen
+#temp {
+#    #homeBGImage ist IMG_RESOURCE Objekt
+#    homeBGImage = IMG_RESOURCE
+#    homeBGImage {
+#        file {
+#            #typoScript versucht über die Seiteneigenschaften einer Seite Bilder zu lesen
+#            import.data = levelmedia:-1, slide
+#            treatIdAsReference = 1
+#            import.listNum = rand
+#
+#        }
+#    }
+#}

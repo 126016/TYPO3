@@ -1,0 +1,9 @@
+#
+# PageTS for The Praktikum Projekt 1
+#
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:the_praktikum_projekt1/Configuration/TsConfig/Page/RTE.tsconfig">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:the_praktikum_projekt1/Configuration/TsConfig/Page/TCEFORM.tsconfig">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:the_praktikum_projekt1/Configuration/TsConfig/Page/TCEMAIN.tsconfig">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:the_praktikum_projekt1/Configuration/TsConfig/Page/Mod/WebLayout/BackendLayouts.tsconfig">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:the_praktikum_projekt1/Configuration/TsConfig/Page/Mod/mod.tsconfig">
+

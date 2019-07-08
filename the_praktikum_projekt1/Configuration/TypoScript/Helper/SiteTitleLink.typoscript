@@ -1,0 +1,9 @@
+page.10.variables {
+    siteTitleLink = TEXT
+    siteTitleLink {
+        value = My first Website in TYPO3 v9.5.6
+        stdWrap.typolink.parameter = t3://page?uid=1&no_cache=1
+        stdWrap.typolink.title = Go to Homepage
+        wrap = <h1 class="nav-brand">|</h1>
+    }
+}

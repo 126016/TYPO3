@@ -1,0 +1,51 @@
+lib.objektBrotkrumenNavigation = HMENU
+lib.objektBrotkrumenNavigation {
+
+    special = rootline
+
+    #Ebene 0 - Home
+    #Ebene 1
+    #....
+    #Ebene n
+
+    # zeige komplette rootline an special.range = 1|-1
+    special.range = 0|-1
+    # durch -2 sehe ich nicht, wo ich mich befinde
+    #special.range = 1|-2
+
+    # Variation: Link nur auf die Uebergeordnete Seite
+    #special.range = -2|-2
+
+    # Text vor dem Rootline Menue
+    wrap = <div class="container rootline"><ol class="breadcrumb" ><li class="breadcrumb-item">Sie sind hier:&nbsp;</li>|</ol></div>
+
+    1 = TMENU
+    1.target = _top
+    1 {
+
+        NO = 1
+        NO {
+            allWrap = <li class="breadcrumb-item">|</li>
+            stdWrap.htmlSpecialChars = 1
+            ATagTitle.field = description // subtitle // title
+
+            # Layout 1: Seite 1 | Seite 2 | Seite 3
+            #linkWrap = |&nbsp;&#124;&nbsp;|*||*| |
+
+            # Layout 2: Seite 1 > Seite 2 > Seite 3
+            #linkWrap = |&nbsp;>&nbsp;|*||*| |
+
+            # Layout 3: Seite 1 >> Seite 2 >> Seite 3
+            linkWrap = |&nbsp;&raquo;&nbsp;|*||*| |
+
+            doNotLinkIt = |*| 0 |*| 1
+        }
+
+        #CURRENT SEITE
+        CUR <.NO
+        CUR {
+            doNotLinkIt = 1
+            allWrap = <li class="breadcrumb-item active">|</li>
+        }
+    }
+}

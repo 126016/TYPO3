@@ -1,0 +1,52 @@
+
+
+ {siteTitleLink -> f:format.raw()}
+
+ <ul id="main-menu" class="sm sm-simple">
+    <f:for each="{mainnavigation}" as="mainnavigationItem">
+
+        <li class="{f:if(condition: mainnavigationItem.active, then:'active')}">
+            <a href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">
+                {mainnavigationItem.title}
+            </a>
+            <f:if condition="{mainnavigationItem.children}">
+                <ul>
+                    <f:for each="{mainnavigationItem.children}" as="child">
+
+                        <li class="{f:if(condition: child.active, then:'active')}">
+                            <a href="{child.link}" target="{child.target}" title="{child.title}">
+                                {child.title}
+                            </a>
+                            <f:if condition="{child.children}">
+                                <ul>
+                                    <f:for each="{child.children}" as="grandchild">
+
+                                        <li class="{f:if(condition: grandchild.active, then:'active')}">
+                                            <a href="{grandchild.link}" target="{grandchild.target}" title="{grandchild.title}">
+                                                {grandchild.title}
+                                            </a>
+                                            <f:if condition="{grandchild.children}">
+                                                 <ul>
+                                                    <f:for each="{grandchild.children}" as="grandgrandchild">
+                                                        <li class="{f:if(condition: grandgrandchild.active, then:'active')}">
+                                                            <a href="{grandgrandchild.link}" target="{grandgrandchild.target}" title="{grandgrandchild.title}">
+                                                                {grandgrandchild.title}
+                                                            </a>
+                                                        </li>
+                                                     </f:for>
+                                                 </ul>
+                                            </f:if>
+                                        </li>
+
+                                    </f:for>
+                                </ul>
+                            </f:if>
+                        </li>
+
+                    </f:for>
+                </ul>
+            </f:if>
+
+        </li>
+    </f:for>
+</ul>

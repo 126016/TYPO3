@@ -1,0 +1,7 @@
+#Standardsprache für das Backend
+mod.SHARED {
+    defaultLanguageFlag = gb
+    defaultLanguageLabel = English
+    #disableLanguages = 1,3
+}
+

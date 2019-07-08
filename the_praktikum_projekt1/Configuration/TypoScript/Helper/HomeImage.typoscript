@@ -1,0 +1,30 @@
+#temporäres objekt Hintergrundbild aus den Seiteneigenschaften/Ressourcen/Media ausgelesen
+temp {
+    #homeBGImage ist IMG_RESOURCE Objekt
+    homeBGImage = IMG_RESOURCE
+    homeBGImage {
+        file {
+            #typoScript versucht über die Seiteneigenschaften einer Seite Bilder zu lesen
+            import.data = levelmedia:-1, slide
+            treatIdAsReference = 1
+            import.listNum = rand
+        }
+
+    }
+}
+
+#Description for headerData
+#
+#Inserts content in the head section of the website. Could e.g. be Meta tags.
+#
+#While you can also use this to include stylesheet references or JavaScript, you should better use page.includeCSS and page.includeJS for such files. Features like file concatenation and file compression will not work on files, which are included using headerData.
+#
+#By default, gets inserted after all the style definitions.
+#############################################################
+#Object copying: The "<" sign
+#The < sign is used to copy one object path to another. The whole object is copied - both value and properties - and it overrides any old objects and values at that position.
+
+page.headerData.123123123 < temp.homeBGImage
+# VO PIPE SIMBOLOT KJE SE STAVI TOA SHTO KJE BIDE DEFINIRANO VO temp.homeBGImage
+page.headerData.123123123.stdWrap.wrap = <style> .jumbotron { background: url(|) top left no-repeat; background-size: cover; height: auto; }</style>
+

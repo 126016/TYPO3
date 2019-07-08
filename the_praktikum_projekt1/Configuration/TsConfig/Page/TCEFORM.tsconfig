@@ -1,0 +1,23 @@
+#
+# TCEFORM
+#
+TCEFORM {
+    pages {
+
+    }
+    tt_content {
+        frame_class.addItems{
+            greybox = gray Box
+            bluebox = blue Box
+            orangebox = orange Box
+        }
+    }
+}
+// Fügt die Konfiguration "full" allen RTE's hinzu
+#RTE.default.preset = default
+#RTE.default.preset = minimal
+RTE.default.preset = full
+// Fügt die Konfiguration "minimal" dem bodytext von Inhaltselementen des Typs textmedia hinzu
+#RTE.config.tt_content.bodytext.types.textmedia.preset = minimal
+// Fügt die Konfiguration "default" dem bodytext von News-Datensätzen hinzu
+#RTE.config.tx_news_domain_model_news.bodytext.preset = default

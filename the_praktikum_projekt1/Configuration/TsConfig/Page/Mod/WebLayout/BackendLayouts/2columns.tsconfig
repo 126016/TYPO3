@@ -1,0 +1,30 @@
+mod.web_layout.BackendLayouts {
+    2ColumnKey {
+        title = 2 Columns
+        icon = EXT:the_praktikum_projekt1/Resources/Public/Images/BackendLayouts/2spalte-belayout.svg
+        config {
+            backend_layout {
+                colCount = 3
+                rowCount = 1
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = mainContent
+                                colspan = 2
+                                colPos = 0
+                                maxitems = NaN
+                            }
+                            2 {
+                                name = rightColumn
+                                colPos = 2
+                                maxitems = NaN
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+mod.web_layout.BackendLayouts {
+    homeKey {
+        title = Home
+        icon = EXT:the_praktikum_projekt1/Resources/Public/Images/BackendLayouts/home-belayout.svg
+        config {
+            backend_layout {
+                colCount = 3
+                rowCount = 4
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = headerContent
+                                colspan = 3
+                                colPos = 4
+                                maxitems = NaN
+                            }
+                        }
+                    }
+                    2 {
+                        columns {
+                            1 {
+                                name = mainContent
+                                colspan = 3
+                                colPos = 0
+                                maxitems = NaN
+                            }
+                        }
+                    }
+                    3 {
+                        columns {
+                            1 {
+                                name = leftColumn
+                                colPos = 1
+                                maxitems = NaN
+                            }
+                            2 {
+                                name = centerContent
+                                colPos = 3
+                            }
+                            3 {
+                                name = rightContent
+                                colPos = 2
+                                maxitems = NaN
+                            }
+                        }
+                    }
+                    4 {
+                        columns {
+                            1 {
+                                name = bottomContent
+                                colspan = 3
+                                colPos = 5
+                                maxitems = NaN
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+# HMENU Baustein li
+lib.objektMetaNavigation = HMENU
+lib.objektMetaNavigation {
+    wrap = <ul class="metanav text-md-right">|</ul>
+
+    special = directory
+    special.value = 27
+
+    1 = TMENU
+    1 {
+#The default "Normal" state rendering of Item. This is required for all menus.
+#
+#If you specify properties for the "NO" property you do not have to set it "1". Otherwise with no properties setting "NO=1" will render the menu anyways (for TMENU this may make sense).
+#
+#The simplest menu TYPO3 can generate is then:
+#
+#page.20 = HMENU
+#page.20.1 = TMENU
+#page.20.1.NO = 1
+#That will be pure <a> tags wrapped around page titles.
+        NO = 1
+        NO {
+            allWrap = <li>|</li>
+            stdWrap.htmlSpecialChars = 1
+            ATagTitle.field = description // subtitle // title
+        }
+
+#        Property:
+#        CUR
+#        Default
+#        0
+#        Enable/Configuration for a menu item if the item is the current page.
+        CUR < .NO
+        CUR.allWrap = <li><strong>|</strong></li>
+    }
+}

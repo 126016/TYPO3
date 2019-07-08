@@ -1,0 +1,70 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default" />
+
+<f:section name="Header">
+    <div class="pageheader container">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <!-- Sprachumschaltung -->
+              <f:render partial="SprachMenu" arguments="{_all}"/>
+            </div>
+            <div class="col-sm-8">
+                <!-- Suche -->
+                <div class="searchform text-sm-right">
+                    <form class="form-inline">
+                        <input type="search" class="form-control" placeholder="Suche">
+                        <button type="submit" class="btn btn-primary">Suche</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainnav">
+        <nav class="main-nav container" role="navigation">
+            <!-- Mobile menu toggle button (hamburger/x icon) -->
+            <input id="main-menu-state" type="checkbox" />
+            <label class="main-menu-btn" for="main-menu-state">
+                <span class="main-menu-btn-icon"></span> Toggle main menu visibility
+            </label>
+
+            <!-- Sample menu definition -->
+            <f:render partial="Navigation" arguments="{_all}"></f:render>
+        </nav>
+    </div>
+    <!-- Ende mainnav -->
+
+</f:section>
+
+<f:section name="Main">
+    <!-- Rootline -->
+    <f:render partial="BrotkrumenNavigation" arguments="{_all}"></f:render>
+
+    <div class="container maincontent">
+        <!-- Content Container -->
+        <div class="row">
+
+            <!-- Main Content 2 Column -->
+            <div class="col-md-8">
+                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '0'}" />
+            </div>
+
+            <div class="col-md-4">
+                <!-- Subnavigation -->
+                <f:cObject typoscriptObjectPath="lib.objektSubNavigation"></f:cObject>
+                <!-- Subnavigation Ende -->
+            </div>
+
+        </div>
+
+        <!-- Beginn Footer Bereich -->
+        <hr>
+
+        <f:render partial="Footer" arguments="{_all}"></f:render>
+    </div>
+    <!-- Ende Content Container -->
+
+</f:section>
+
+</html>

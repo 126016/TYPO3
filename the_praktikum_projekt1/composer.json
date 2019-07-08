@@ -1,0 +1,19 @@
+{
+    "name": "ion2s/the-praktikum-projekt1",
+    "type": "typo3-cms-extension",
+    "description": "The Praktikum Projekt 1 für das Praktikum TYPO3",
+    "homepage": "https://ion2s.com",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "version": "1.0.0",
+    "require": {
+        "typo3/cms-core": "^9.5",
+        "typo3/cms-rte-ckeditor": "^9.5",
+        "typo3/cms-fluid-styled-content": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ion2s\\ThePraktikumProjekt1\\": "Classes/"
+        }
+    }
+}
